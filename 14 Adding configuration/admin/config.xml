@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="greetings"
+		label="COM_HELLOWORLD_CONFIG_GREETING_SETTINGS_LABEL"
+		description="COM_HELLOWORLD_CONFIG_GREETING_SETTINGS_DESC"
+	>
+		<field
+			name="show_category"
+			type="radio"
+			label="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_LABEL"
+			description="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_DESC"
+			default="0"
+		>
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+	</fieldset>
+</config>
