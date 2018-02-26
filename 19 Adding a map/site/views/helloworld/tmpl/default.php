@@ -25,7 +25,7 @@ defined('_JEXEC') or die('Restricted access');
         $alt = $this->item->imageDetails['alt'];
         $caption = $this->item->imageDetails['caption'];
         echo sprintf($html, $src, $alt, $caption);
-    } 
+    } ?>
 
 	<div id="map" class="map"></div>
 	<div class="map-callout map-callout-bottom" id="greeting-container"></div>
