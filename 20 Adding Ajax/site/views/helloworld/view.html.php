@@ -51,8 +51,8 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		JHtml::_('jquery.framework');
 
 		// we need the Openlayers JS and CSS libraries
-		$document->addScript("https://openlayers.org/en/v4.6.4/build/ol.js");
-		$document->addStyleSheet("https://openlayers.org/en/v4.6.4/css/ol.css");
+		$document->addScript("https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js");
+		$document->addStyleSheet("https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css");
 
 		// ... and our own JS and CSS
 		$document->addScript(JURI::root() . "media/com_helloworld/js/openstreetmap.js");
