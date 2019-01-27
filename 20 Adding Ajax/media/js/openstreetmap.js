@@ -106,7 +106,7 @@ function searchHere() {
     var mapBounds = getMapBounds();
     var token = jQuery("#token").attr("name");
     jQuery.ajax({
-        url: "#",
+        url: "index.php?option=com_helloworld&tmpl=component",
         data: { [token]: "1", task: "mapsearch", format: "json", mapBounds: mapBounds },
         success: function(result, status, xhr) { displaySearchResults(result); },
         error: function() { console.log('ajax call failed'); },
