@@ -29,7 +29,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
         // set up the redirect back to the same form
         $this->setRedirect(
             (string)JUri::getInstance(), 
-            JText::_(COM_HELLOWORLD_ADD_CANCELLED)
+            JText::_('COM_HELLOWORLD_ADD_CANCELLED')
 		);
     }
     
