@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 // No direct access to this file
@@ -15,11 +15,11 @@ defined('_JEXEC') or die('Restricted access');
  */
 class HelloWorldController extends JControllerLegacy
 {
-	public function mapsearch()
+    public function mapsearch()
     {
         if (!JSession::checkToken('get')) 
         {
-            echo new JResponseJson(null, "Error: Invalid token", true);
+            echo new JResponseJson(null, JText::_('JINVALID_TOKEN'), true);
         }
         else 
         {

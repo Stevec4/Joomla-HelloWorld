@@ -39,7 +39,7 @@ jQuery(document).ready(function() {
     // Now we add a marker for our Helloworld position
     // To do that, we specify it as a Point Feature, and we add styling 
     // to define how that Feature is presented on the map
-    helloworldPoint = new ol.Feature({geometry: new ol.geom.Point(mapCentre)});
+    var helloworldPoint = new ol.Feature({geometry: new ol.geom.Point(mapCentre)});
     // we'll define the style as a red 5 point star with blue edging
     const redFill = new ol.style.Fill({
         color: 'red'
@@ -93,6 +93,7 @@ jQuery(document).ready(function() {
     });    
 });
 
+
 function getMapBounds(){
     var mercatorMapbounds = map.getView().calculateExtent(map.getSize());
     var latlngMapbounds = ol.proj.transformExtent(mercatorMapbounds,'EPSG:3857','EPSG:4326');
@@ -106,7 +107,6 @@ function searchHere() {
     var mapBounds = getMapBounds();
     var token = jQuery("#token").attr("name");
     jQuery.ajax({
-        url: "#",
         data: { [token]: "1", task: "mapsearch", format: "json", mapBounds: mapBounds },
         success: function(result, status, xhr) { displaySearchResults(result); },
         error: function() { console.log('ajax call failed'); },
@@ -118,8 +118,8 @@ function displaySearchResults(result) {
         var html = "";
         for (var i=0; i<result.data.length; i++) {
             html += "<p>" + result.data[i].greeting + 
-                " at latitude " + result.data[i].latitude + 
-                " and longitude " + result.data[i].longitude + "</p>";
+                " @ " + result.data[i].latitude + 
+                ", " + result.data[i].longitude + "</p>";
         }
         jQuery("#searchresults").html(html);
     } else {

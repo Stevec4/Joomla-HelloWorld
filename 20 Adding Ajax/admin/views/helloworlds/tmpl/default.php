@@ -3,9 +3,10 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
@@ -63,7 +64,6 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
                 </th>
             </tr>
             </thead>
-
             <tfoot>
                 <tr>
                     <td colspan="5">
@@ -91,7 +91,7 @@ $listDirn      = $this->escape($this->state->get('list.direction'));
                                     <?php echo JText::_('JCATEGORY') . ': ' . $this->escape($row->category_title); ?>
                                 </div>
                             </td>
-							 <td align="center">
+							<td align="center">
                                 <?php echo "[" . $row->latitude . ", " . $row->longitude . "]"; ?>
                             </td>
                             <td align="center">

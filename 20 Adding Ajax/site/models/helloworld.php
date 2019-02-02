@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -78,7 +78,6 @@ class HelloWorldModelHelloWorld extends JModelItem
 				  ->leftJoin('#__categories as c ON h.catid=c.id')
 				  ->where('h.id=' . (int)$id);
 			$db->setQuery((string)$query);
-
 		
 			if ($this->item = $db->loadObject()) 
 			{
@@ -100,7 +99,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 		}
 		return $this->item;
 	}
-	
+
 	public function getMapParams()
 	{
 		if ($this->item) 
@@ -143,5 +142,4 @@ class HelloWorldModelHelloWorld extends JModelItem
 
 		return $results; 
 	}
-
 }
