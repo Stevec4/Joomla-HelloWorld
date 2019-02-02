@@ -1,0 +1,1 @@
+ALTER TABLE `#__helloworld` ADD `image` VARCHAR(1024) NOT NULL DEFAULT '';
