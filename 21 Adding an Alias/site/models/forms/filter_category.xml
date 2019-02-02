@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="list">
+        <field
+			name="fullordering"
+			type="list"
+			onchange="this.form.submit();"
+			default="greeting ASC"
+			>
+			<option value="">COM_HELLOWORLD_SORT_BY</option>
+			<option value="greeting ASC">COM_HELLOWORLD_GREETING_ASC</option>
+			<option value="greeting DESC">COM_HELLOWORLD_GREETING_DESC</option>
+			<option value="id ASC">COM_HELLOWORLD_ID_ASC</option>
+			<option value="id DESC">COM_HELLOWORLD_ID_DESC</option>
+			<option value="alias ASC">COM_HELLOWORLD_ALIAS_ASC</option>
+			<option value="alias DESC">COM_HELLOWORLD_ALIAS_DESC</option>
+		</field>
+		<field
+			name="limit"
+			type="limitbox"
+			class="input-mini"
+			default="10"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>
