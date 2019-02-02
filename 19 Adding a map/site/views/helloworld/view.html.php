@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -51,8 +51,8 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		JHtml::_('jquery.framework');
 
 		// we need the Openlayers JS and CSS libraries
-		$document->addScript("https://openlayers.org/en/v4.6.4/build/ol.js");
-		$document->addStyleSheet("https://openlayers.org/en/v4.6.4/css/ol.css");
+		$document->addScript("https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.js");
+		$document->addStyleSheet("https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.css");
 
 		// ... and our own JS and CSS
 		$document->addScript(JURI::root() . "media/com_helloworld/js/openstreetmap.js");

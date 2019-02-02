@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -54,17 +54,18 @@ class HelloWorldModelHelloWorlds extends JModelList
 
 		// Create the base select statement.
 		$query->select('a.id as id, a.greeting as greeting, a.published as published, a.created as created, 
-			  a.image as imageInfo, a.latitude as latitude, a.longitude as longitude')
+			   a.image as imageInfo, a.latitude as latitude, a.longitude as longitude')
 			  ->from($db->quoteName('#__helloworld', 'a'));
+
 
 		// Join over the categories.
 		$query->select($db->quoteName('c.title', 'category_title'))
 			->join('LEFT', $db->quoteName('#__categories', 'c') . ' ON c.id = a.catid');
-        
+
 		// Join with users table to get the username of the author
 		$query->select($db->quoteName('u.username', 'author'))
 			->join('LEFT', $db->quoteName('#__users', 'u') . ' ON u.id = a.created_by');
-            
+
 		// Filter: like / search
 		$search = $this->getState('filter.search');
 

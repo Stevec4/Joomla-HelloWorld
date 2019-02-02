@@ -37,7 +37,7 @@ jQuery(document).ready(function() {
     // Now we add a marker for our Helloworld position
     // To do that, we specify it as a Point Feature, and we add styling 
     // to define how that Feature is presented on the map
-    helloworldPoint = new ol.Feature({geometry: new ol.geom.Point(mapCentre)});
+    var helloworldPoint = new ol.Feature({geometry: new ol.geom.Point(mapCentre)});
     // we'll define the style as a red 5 point star with blue edging
     const redFill = new ol.style.Fill({
         color: 'red'
