@@ -3,7 +3,7 @@
 
 	<name>COM_HELLOWORLD</name>
 	<!-- The following elements are optional and free of formatting constraints -->
-	<creationDate>December 2017</creationDate>
+	<creationDate>December 2019</creationDate>
 	<author>Robbie Jackson</author>
 	<authorEmail>john.doe@example.org</authorEmail>
 	<authorUrl>https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Introduction</authorUrl>
@@ -16,7 +16,7 @@
 
 	<!-- Runs on install/uninstall/update; New in 2.5 -->
 	<scriptfile>script.php</scriptfile>
-
+	
 	<install> <!-- Runs on install -->
 		<sql>
 			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -80,12 +80,10 @@
 			<folder>controllers</folder>
 			<!-- helpers files section -->
 			<folder>helpers</folder>
-			<!-- language folder -->
-            <folder>language</folder>
 		</files>
 		<languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_helloworld.ini</language>
-			<!--<language tag="en-GB">en-GB/en-GB.com_helloworld.sys.ini</language>-->
+			<language tag="en-GB">en-GB/en-GB.com_helloworld.sys.ini</language>
 		</languages>
 	</administration>
 

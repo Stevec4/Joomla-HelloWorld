@@ -3,13 +3,13 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // No direct access
 defined('_JEXEC') or die('Restricted access');
-JHtml::_('behavior.formvalidator');
+JHtml::_('behavior.formvalidation');
 
 // The following is to enable setting the permission's Calculated Setting 
 // when you change the permission's Setting. 
