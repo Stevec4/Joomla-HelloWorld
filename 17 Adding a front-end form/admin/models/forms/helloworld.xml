@@ -52,7 +52,7 @@
 			</field>
 		</fieldset>
 	</fields>
-	<fieldset
+<fieldset
 			name="accesscontrol"
 			label="COM_HELLOWORLD_FIELDSET_RULES"
 	>

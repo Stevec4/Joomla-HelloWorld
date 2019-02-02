@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -39,18 +39,16 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 		//$this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
 		$this->filterForm    	= $this->get('FilterForm');
 		$this->activeFilters 	= $this->get('ActiveFilters');
-        
+
 		// What Access Permissions does this user have? What can (s)he do?
 		$this->canDo = JHelperContent::getActions('com_helloworld');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JError::raiseError(500, implode('<br />', $errors));
-
-			return false;
+			throw new Exception(implode("\n", $errors), 500);
 		}
-        
+
 		// Set the submenu
 		HelloWorldHelper::addSubmenu('helloworlds');
 
@@ -81,6 +79,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 		}
 
 		JToolBarHelper::title($title, 'helloworld');
+
 		if ($this->canDo->get('core.create')) 
 		{
 			JToolBarHelper::addNew('helloworld.add', 'JTOOLBAR_NEW');
@@ -98,6 +97,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 			JToolBarHelper::divider();
 			JToolBarHelper::preferences('com_helloworld');
 		}
+
 	}
 	/**
 	 * Method to set up the document properties

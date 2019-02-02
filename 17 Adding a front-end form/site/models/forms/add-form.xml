@@ -22,7 +22,7 @@
                 hint="COM_HELLOWORLD_HELLOWORLD_GREETING_HINT"
 				default=""
 				/>
-        <field
+		<field
 				name="catid"
 				type="category"
 				extension="com_helloworld"
@@ -31,19 +31,47 @@
 				label="COM_HELLOWORLD_HELLOWORLD_FIELD_CATID_LABEL"
 				description="COM_HELLOWORLD_HELLOWORLD_FIELD_CATID_DESC"
 				required="true"
-                >
-			<option value="0">JOPTION_SELECT_CATEGORY</option>
+				>
+				<option value="0">JOPTION_SELECT_CATEGORY</option>
 		</field>
-        <field
-                name="message"
-                type="textarea"
-                rows="5"
-                cols="80"
+		<fields name="imageinfo" label="COM_HELLOWORLD_HELLOWORLD_IMAGE_LABEL">
+			<field
+				name="image"
+				type="file"
+				label="COM_HELLOWORLD_HELLOWORLD_PICTURE_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_PICTURE_DESC" 
+				accept="image/*"
+				>
+			</field>
+			<field
+ 				name="caption"
+				type="text"
+				label="COM_HELLOWORLD_HELLOWORLD_CAPTION_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_CAPTION_DESC"
+				size="40"
+				class="inputbox"
+				>
+			</field>
+			<field
+				name="alt"
+				type="text"
+				label="COM_HELLOWORLD_HELLOWORLD_ALTTEXT_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_ALTTEXT_DESC"
+				size="40"
+				class="inputbox"
+				>
+			</field>
+		</fields>
+		<field
+				name="message"
+				type="textarea"
+				rows="5"
+				cols="80"
 				label="COM_HELLOWORLD_HELLOWORLD_MESSAGE_LABEL"
 				description="COM_HELLOWORLD_HELLOWORLD_MESSAGE_DESC"
-                hint="COM_HELLOWORLD_HELLOWORLD_MESSAGE_HINT"
+				hint="COM_HELLOWORLD_HELLOWORLD_MESSAGE_HINT"
 				required="true"
-                >
+				>
         </field>
         <field
 				name="captcha"

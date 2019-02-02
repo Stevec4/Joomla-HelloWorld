@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -29,7 +29,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
         // set up the redirect back to the same form
         $this->setRedirect(
             (string)JUri::getInstance(), 
-            JText::_(COM_HELLOWORLD_ADD_CANCELLED)
+            JText::_('COM_HELLOWORLD_ADD_CANCELLED')
 		);
     }
     
@@ -65,6 +65,11 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		// set up context for saving form data
 		$context = "$this->option.edit.$this->context";
         
+		// save the form data and set up the redirect back to the same form, 
+		// to avoid repeating them under every error condition
+		$app->setUserState($context . '.data', $data);
+		$this->setRedirect($currentUri);
+
 		// Validate the posted data.
 		// First we need to set up an instance of the form ...
 		$form = $model->getForm($data, false);
@@ -100,13 +105,75 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 				}
 			}
 
-			// Save the form data in the session.
-			$app->setUserState($context . '.data', $data);
-
-			// Redirect back to the same screen.
-			$this->setRedirect($currentUri);
-
 			return false;
+		}
+
+		// Handle the uploaded file - get it from the PHP $_FILES structure
+		$fileinfo = $this->input->files->get('jform', array(), 'array');
+		$file = $fileinfo['imageinfo']['image'];
+		/* The $file variable above should contain an array of 5 elements as follows:
+		 *   name: the name of the file (on the system from which it was uploaded), without directory info
+		 *   type: should be something like image/jpeg
+		 *   tmp_name: pathname of the file where PHP has stored the uploaded data 
+		 *   error: 0 if no error
+		 *   size: size of the file in bytes
+		 */
+        
+		// Check if any files have been uploaded
+		if ($file['error'] == 4)   // no file uploaded (see PHP file upload error conditions)
+		{
+			$validData['imageinfo'] = null;
+		} 
+		else 
+		{
+			if ($file['error'] > 0)
+			{
+				$app->enqueueMessage(JText::sprintf('COM_HELLOWORLD_ERROR_FILEUPLOAD', $file['error']), 'warning');
+				return false;
+			}
+            
+			// make sure filename is clean
+			jimport('joomla.filesystem.file');
+			$file['name'] = JFile::makeSafe($file['name']);
+			if (!isset($file['name']))
+			{
+				// No filename (after the name was cleaned by JFile::makeSafe)
+				$app->enqueueMessage(JText::_('COM_HELLOWORLD_ERROR_BADFILENAME'), 'warning');
+				return false;
+			}
+
+			// files from Microsoft Windows can have spaces in the filenames
+			$file['name'] = str_replace(' ', '-', $file['name']);
+
+			// do checks against Media configuration parameters
+			$mediaHelper = new JHelperMedia;
+			if (!$mediaHelper->canUpload($file))
+			{
+				// The file can't be uploaded - the helper class will have enqueued the error message
+				return false;
+			}
+            
+			// prepare the uploaded file's destination pathnames
+			$mediaparams = JComponentHelper::getParams('com_media');
+			$relativePathname = JPath::clean($mediaparams->get($path, 'images') . '/' . $file['name']);
+			$absolutePathname = JPATH_ROOT . '/' . $relativePathname;
+			if (JFile::exists($absolutePathname))
+			{
+				// A file with this name already exists
+				$app->enqueueMessage(JText::_('COM_HELLOWORLD_ERROR_FILE_EXISTS'), 'warning');
+				return false;
+			}
+            
+			// check file contents are clean, and copy it to destination pathname
+			if (!JFile::upload($file['tmp_name'], $absolutePathname))
+			{
+				// Error in upload
+				$app->enqueueMessage(JText::_('COM_HELLOWORLD_ERROR_UNABLE_TO_UPLOAD_FILE'));
+				return false;
+			}
+            
+			// Upload succeeded, so update the relative filename for storing in database
+			$validData['imageinfo']['image'] = $relativePathname;
 		}
         
 		// add the 'created by' and 'created' date fields
@@ -116,16 +183,9 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		// Attempt to save the data.
 		if (!$model->save($validData))
 		{
-		// Handle the case where the save failed
-            
-			// Save the data in the session.
-			$app->setUserState($context . '.data', $validData);
-
-			// Redirect back to the edit screen.
+			// Handle the case where the save failed
 			$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()));
 			$this->setMessage($this->getError(), 'error');
-
-			$this->setRedirect($currentUri);
 
 			return false;
 		}

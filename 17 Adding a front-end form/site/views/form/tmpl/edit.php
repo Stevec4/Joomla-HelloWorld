@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  *
  * This layout file is for displaying the front end form for capturing a new helloworld message
@@ -16,7 +16,7 @@ JHtml::_('behavior.formvalidator');
 
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_helloworld&view=form&layout=edit'); ?>"
-    method="post" name="adminForm" id="adminForm" class="form-validate">
+    method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
 
 	<div class="form-horizontal">
 		<fieldset class="adminform">
