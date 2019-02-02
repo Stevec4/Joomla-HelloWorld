@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -31,10 +31,10 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 		$app = JFactory::getApplication();
 		$context = "helloworld.list.admin.helloworld";
 		// Get data from the model
-		$this->items		= $this->get('Items');
-		$this->pagination	= $this->get('Pagination');
-		$this->state		= $this->get('State');
-		$this->filter_order	= $app->getUserStateFromRequest($context.'filter_order', 'filter_order', 'greeting', 'cmd');
+		$this->items			= $this->get('Items');
+		$this->pagination		= $this->get('Pagination');
+		$this->state			= $this->get('State');
+		$this->filter_order 	= $app->getUserStateFromRequest($context.'filter_order', 'filter_order', 'greeting', 'cmd');
 		$this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
 		$this->filterForm    	= $this->get('FilterForm');
 		$this->activeFilters 	= $this->get('ActiveFilters');
@@ -96,6 +96,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
 			JToolBarHelper::divider();
 			JToolBarHelper::preferences('com_helloworld');
 		}
+
 	}
 	/**
 	 * Method to set up the document properties
