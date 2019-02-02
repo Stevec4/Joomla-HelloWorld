@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -46,10 +46,12 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		}
 
 
-		// Set the toolbar
+		// Set the toolbar and number of found items
+		HelloworldHelper::addSubmenu('helloworlds');
 		$this->addToolBar();
 
 		// Display the template
+		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
 
 		// Set the document
