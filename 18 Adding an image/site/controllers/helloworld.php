@@ -3,42 +3,29 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
-// No direct access to this file
-defined('_JEXEC') or die('Restricted access');
-
-/**
- * HelloWorld Controller
- *
- * @package     Joomla.Site
- * @subpackage  com_helloworld
- *
- * Used to handle the http POST from the front-end form which allows 
- * users to enter a new helloworld message
- *
- */
 class HelloWorldControllerHelloWorld extends JControllerForm
 {   
-    public function cancel($key = null)
-    {
-        parent::cancel($key);
+	public function cancel($key = null)
+	{
+		parent::cancel($key);
         
-        // set up the redirect back to the same form
-        $this->setRedirect(
-            (string)JUri::getInstance(), 
-            JText::_(COM_HELLOWORLD_ADD_CANCELLED)
-		);
-    }
+		// set up the redirect back to the same form
+		$this->setRedirect(
+			(string)JUri::getInstance(), 
+			JText::_('COM_HELLOWORLD_ADD_CANCELLED')
+			);
+	}
     
-    /*
-     * Function handing the save for adding a new helloworld record
-     * Based on the save() function in the JControllerForm class
-     */
-    public function save($key = null, $urlVar = null)
-    {
+	/*
+	 * Function handing the save for adding a new helloworld record
+	 * Based on the save() function in the JControllerForm class
+	 */
+	public function save($key = null, $urlVar = null)
+	{
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
         
@@ -64,12 +51,12 @@ class HelloWorldControllerHelloWorld extends JControllerForm
         
 		// set up context for saving form data
 		$context = "$this->option.edit.$this->context";
-        
+
 		// save the form data and set up the redirect back to the same form, 
 		// to avoid repeating them under every error condition
 		$app->setUserState($context . '.data', $data);
 		$this->setRedirect($currentUri);
-
+        
 		// Validate the posted data.
 		// First we need to set up an instance of the form ...
 		$form = $model->getForm($data, false);

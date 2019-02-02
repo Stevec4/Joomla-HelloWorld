@@ -15,7 +15,8 @@
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
 		</field>
-        <field
+	</fieldset>
+	<field
 			name="captcha"
 			type="plugins"
             folder="captcha"
@@ -35,8 +36,7 @@
 			default="0"
 		>
 		</field>
-	</fieldset>
-    <fieldset
+	<fieldset
 		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"
 		description="JCONFIG_PERMISSIONS_DESC"

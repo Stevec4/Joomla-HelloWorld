@@ -3,7 +3,7 @@
  * @package     Joomla.Administrator
  * @subpackage  com_helloworld
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -17,10 +17,17 @@ defined('_JEXEC') or die('Restricted access');
  */
 class HelloWorldViewHelloWorld extends JViewLegacy
 {
-	protected $form;
+	/**
+	 * View form
+	 *
+	 * @var         form
+	 */
+	protected $form = null;
 	protected $item;
 	protected $script;
 	protected $canDo;
+
+
 
 	/**
 	 * Display the Hello World view
@@ -44,6 +51,7 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		{
 			throw new Exception(implode("\n", $errors), 500);
 		}
+
 
 		// Set the toolbar
 		$this->addToolBar();
@@ -117,10 +125,10 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 	 */
 	protected function setDocument() 
 	{
-		$isNew = ($this->item->id == 0);
+		$isNew = ($this->item->id < 1);
 		$document = JFactory::getDocument();
-		$document->setTitle($isNew ? JText::_('COM_HELLOWORLD_HELLOWORLD_CREATING')
-		                           : JText::_('COM_HELLOWORLD_HELLOWORLD_EDITING'));
+		$document->setTitle($isNew ? JText::_('COM_HELLOWORLD_HELLOWORLD_CREATING') :
+                JText::_('COM_HELLOWORLD_HELLOWORLD_EDITING'));
 		$document->addScript(JURI::root() . $this->script);
 		$document->addScript(JURI::root() . "/administrator/components/com_helloworld"
 		                                  . "/views/helloworld/submitbutton.js");
