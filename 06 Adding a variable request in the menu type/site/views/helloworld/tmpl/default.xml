@@ -12,7 +12,7 @@
 					description="COM_HELLOWORLD_HELLOWORLD_FIELD_GREETING_DESC"
 					default="1">
                 <option value="1">Hello World!</option>
-				<option value="2">Good bye World!</option>
+				<option value="2">Good Bye World!</option>
              </field>
 		</fieldset>
 	</fields>
