@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+    addrulepath="/administrator/components/com_helloworld/models/rules"
+	addfieldpath="/administrator/components/com_helloworld/models/fields"
+    >
+    <fieldset
+				name="details"
+				label="COM_HELLOWORLD_HELLOWORLD_DETAILS"
+	>
+		<field
+				name="id"
+				type="hidden"
+				/>
+		<field
+				name="greeting"
+				type="text"
+				label="COM_HELLOWORLD_HELLOWORLD_GREETING_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_GREETING_DESC"
+				size="40"
+				class="inputbox"
+				validate="greeting"
+				required="true"
+                hint="COM_HELLOWORLD_HELLOWORLD_GREETING_HINT"
+				default=""
+				/>
+		<field 
+				name="alias" 
+				type="text" 
+				label="JFIELD_ALIAS_LABEL"
+				description="JFIELD_ALIAS_DESC"
+				hint="JFIELD_ALIAS_PLACEHOLDER"
+				size="40" 
+				/>
+
+		<field
+				name="catid"
+				type="category"
+				extension="com_helloworld"
+				class="inputbox"
+				default=""
+				label="COM_HELLOWORLD_HELLOWORLD_FIELD_CATID_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_FIELD_CATID_DESC"
+				required="true"
+				>
+				<option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>
+		<fields name="imageinfo" label="COM_HELLOWORLD_HELLOWORLD_IMAGE_LABEL">
+			<field
+				name="image"
+				type="file"
+				label="COM_HELLOWORLD_HELLOWORLD_PICTURE_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_PICTURE_DESC" 
+				accept="image/*"
+				>
+			</field>
+			<field
+ 				name="caption"
+				type="text"
+				label="COM_HELLOWORLD_HELLOWORLD_CAPTION_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_CAPTION_DESC"
+				size="40"
+				class="inputbox"
+				>
+			</field>
+			<field
+				name="alt"
+				type="text"
+				label="COM_HELLOWORLD_HELLOWORLD_ALTTEXT_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_ALTTEXT_DESC"
+				size="40"
+				class="inputbox"
+				>
+			</field>
+		</fields>
+		<field
+				name="language"
+				type="contentlanguage"
+				label="JFIELD_LANGUAGE_LABEL"
+				description="JFIELD_LANGUAGE_DESC"
+				class="inputbox">
+		</field>
+		<field
+				name="message"
+				type="textarea"
+				rows="5"
+				cols="80"
+				label="COM_HELLOWORLD_HELLOWORLD_MESSAGE_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_MESSAGE_DESC"
+				hint="COM_HELLOWORLD_HELLOWORLD_MESSAGE_HINT"
+				required="true"
+				>
+        </field>
+        <field
+				name="captcha"
+				type="captcha"
+				label="COM_HELLOWORLD_HELLOWORLD_FIELD_CAPTCHA_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_FIELD_CAPTCHA_DESC"
+                validate="captcha"
+                >
+		</field>
+        <fields name="params">
+            <field
+                    name="show_category"
+                    type="list"
+                    label="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_LABEL"
+                    description="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_DESC"
+                    default=""
+                    useglobal="true"
+            >
+                <option value="0">JHIDE</option>
+                <option value="1">JSHOW</option>
+            </field>
+        </fields>
+		<field  name="parent_id"
+				type="helloworldparent"
+				label="COM_HELLOWORLD_HELLOWORLD_FIELD_PARENT_LABEL"
+				description="COM_HELLOWORLD_HELLOWORLD_FIELD_PARENT_DESC"
+				default="1"
+				filter="int">
+		</field>
+
+    </fieldset>
+</form>
