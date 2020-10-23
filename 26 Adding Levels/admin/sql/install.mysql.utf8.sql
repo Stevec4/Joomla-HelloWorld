@@ -9,7 +9,6 @@ CREATE TABLE `#__helloworld` (
 	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
 	`greeting` VARCHAR(25) NOT NULL,
 	`alias`  VARCHAR(40)  NOT NULL DEFAULT '',
-	`language`  CHAR(7)  NOT NULL DEFAULT '*',
 	`parent_id`	int(10)    NOT NULL DEFAULT '1',
 	`level`	int(10)    NOT NULL DEFAULT '0',
 	`path`	VARCHAR(400)    NOT NULL DEFAULT '',
